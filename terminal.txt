@@ -1,0 +1,420 @@
+Microsoft Windows [Version 10.0.22631.2861]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\debjit>show db
+'show' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\debjit>show db
+'show' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\debjit>cd ..
+
+C:\Users>cd ..
+
+C:\>mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 40
+Server version: 10.4.27-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show db
+    ->
+    ->
+    -> CREATE DATABASE debjit;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'db
+
+
+CREATE DATABASE debjit' at line 4
+MariaDB [(none)]> CREATE DATABASE debjit
+    -> show db
+    -> Bye
+Ctrl-C -- exit!
+
+C:\>
+
+C:\>mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 41
+Server version: 10.4.27-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> CREATE DATABASE debjit;
+Query OK, 1 row affected (0.001 sec)
+
+MariaDB [(none)]> show db
+    -> Ctrl-C -- exit!
+Bye
+
+C:\>
+
+C:\>mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 42
+Server version: 10.4.27-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show database
+    -> Bye
+Ctrl-C -- exit!
+
+C:\>
+
+C:\>
+
+C:\>mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 43
+Server version: 10.4.27-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show database;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'database' at line 1
+MariaDB [(none)]> show db;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'db' at line 1
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| debjit             |
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------+
+6 rows in set (0.001 sec)
+
+MariaDB [(none)]> DELETE DATABASE debjit;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'DATABASE debjit' at line 1
+MariaDB [(none)]> DELETE debjit;
+ERROR 1046 (3D000): No database selected
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| debjit             |
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------+
+6 rows in set (0.001 sec)
+
+MariaDB [(none)]> use debjit;
+Database changed
+MariaDB [debjit]> CREATE TABLE employees (id INT PRIMARY KEY, name VARCHAR(50),
+    -> salary DECIMAL(10, 2));
+Query OK, 0 rows affected (0.010 sec)
+
+MariaDB [debjit]> select * from debjit;
+ERROR 1146 (42S02): Table 'debjit.debjit' doesn't exist
+MariaDB [debjit]> select * from employees;
+Empty set (0.001 sec)
+
+MariaDB [debjit]> CREATE TABLE employees (id INT PRIMARY KEY, name VARCHAR(50),name VARCHAR(50));
+ERROR 1050 (42S01): Table 'employees' already exists
+MariaDB [debjit]> DROP TABLES employees;
+Query OK, 0 rows affected (0.009 sec)
+
+MariaDB [debjit]> CREATE TABLE employees (id INT PRIMARY KEY, name VARCHAR(50),name VARCHAR(50));
+ERROR 1060 (42S21): Duplicate column name 'name'
+MariaDB [debjit]> CREATE TABLE employees (id INT PRIMARY KEY, name VARCHAR(50),address VARCHAR(50));
+Query OK, 0 rows affected (0.010 sec)
+
+MariaDB [debjit]> select * from employees;
+Empty set (0.001 sec)
+
+MariaDB [debjit]> INSERT INTO employees(id , name , address) VALUES (1 , "debjit" , "kolkata");
+Query OK, 1 row affected (0.007 sec)
+
+MariaDB [debjit]> select * from employees;
++----+--------+---------+
+| id | name   | address |
++----+--------+---------+
+|  1 | debjit | kolkata |
++----+--------+---------+
+1 row in set (0.000 sec)
+
+MariaDB [debjit]> show tables;
++------------------+
+| Tables_in_debjit |
++------------------+
+| employees        |
++------------------+
+1 row in set (0.001 sec)
+
+MariaDB [debjit]> INSERT INTO employees(id , name , address) VALUES (2 , "debu" , "Asansol");
+Query OK, 1 row affected (0.001 sec)
+
+MariaDB [debjit]> select * from employees;
++----+--------+---------+
+| id | name   | address |
++----+--------+---------+
+|  1 | debjit | kolkata |
+|  2 | debu   | Asansol |
++----+--------+---------+
+2 rows in set (0.000 sec)
+
+MariaDB [debjit]> INSERT INTO employees(id , name , address) VALUES (3 , "pratik" , "lochipur");
+Query OK, 1 row affected (0.007 sec)
+
+MariaDB [debjit]> select * from employees;
++----+--------+----------+
+| id | name   | address  |
++----+--------+----------+
+|  1 | debjit | kolkata  |
+|  2 | debu   | Asansol  |
+|  3 | pratik | lochipur |
++----+--------+----------+
+3 rows in set (0.000 sec)
+
+MariaDB [debjit]> INSERT INTO employees(id , name , address) VALUES (4 , "subham" , "jyrambati"),(5 , "akash" , "kotulpur");
+Query OK, 2 rows affected (0.001 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+MariaDB [debjit]> select * from employees;
++----+--------+-----------+
+| id | name   | address   |
++----+--------+-----------+
+|  1 | debjit | kolkata   |
+|  2 | debu   | Asansol   |
+|  3 | pratik | lochipur  |
+|  4 | subham | jyrambati |
+|  5 | akash  | kotulpur  |
++----+--------+-----------+
+5 rows in set (0.000 sec)
+
+MariaDB [debjit]> update employees set address="deshra" where id=4 ;
+Query OK, 1 row affected (0.007 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [debjit]> select * from employees;
++----+--------+----------+
+| id | name   | address  |
++----+--------+----------+
+|  1 | debjit | kolkata  |
+|  2 | debu   | Asansol  |
+|  3 | pratik | lochipur |
+|  4 | subham | deshra   |
+|  5 | akash  | kotulpur |
++----+--------+----------+
+5 rows in set (0.000 sec)
+
+MariaDB [debjit]> update employees set address="deshra" where name ="PRATIK" ;
+Query OK, 1 row affected (0.007 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [debjit]> select * from employees;
++----+--------+----------+
+| id | name   | address  |
++----+--------+----------+
+|  1 | debjit | kolkata  |
+|  2 | debu   | Asansol  |
+|  3 | pratik | deshra   |
+|  4 | subham | deshra   |
+|  5 | akash  | kotulpur |
++----+--------+----------+
+5 rows in set (0.000 sec)
+
+MariaDB [debjit]> update employees set address="deshra" where name ="deb" ;
+Query OK, 0 rows affected (0.000 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+MariaDB [debjit]> alter table employees add column stipend bigint;
+Query OK, 0 rows affected (0.010 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [debjit]> select * from employees;
++----+--------+----------+---------+
+| id | name   | address  | stipend |
++----+--------+----------+---------+
+|  1 | debjit | kolkata  |    NULL |
+|  2 | debu   | Asansol  |    NULL |
+|  3 | pratik | deshra   |    NULL |
+|  4 | subham | deshra   |    NULL |
+|  5 | akash  | kotulpur |    NULL |
++----+--------+----------+---------+
+5 rows in set (0.000 sec)
+
+MariaDB [debjit]> update employees set stipend= 15000 where address="deshra" ;
+Query OK, 2 rows affected (0.007 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+MariaDB [debjit]> select * from employees;
++----+--------+----------+---------+
+| id | name   | address  | stipend |
++----+--------+----------+---------+
+|  1 | debjit | kolkata  |    NULL |
+|  2 | debu   | Asansol  |    NULL |
+|  3 | pratik | deshra   |   15000 |
+|  4 | subham | deshra   |   15000 |
+|  5 | akash  | kotulpur |    NULL |
++----+--------+----------+---------+
+5 rows in set (0.000 sec)
+
+MariaDB [debjit]> update employees set address="kolkata" where name ="akash" ;
+Query OK, 1 row affected (0.001 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [debjit]> select * from employees;
++----+--------+---------+---------+
+| id | name   | address | stipend |
++----+--------+---------+---------+
+|  1 | debjit | kolkata |    NULL |
+|  2 | debu   | Asansol |    NULL |
+|  3 | pratik | deshra  |   15000 |
+|  4 | subham | deshra  |   15000 |
+|  5 | akash  | kolkata |    NULL |
++----+--------+---------+---------+
+5 rows in set (0.000 sec)
+
+MariaDB [debjit]> update employees set stipend= 11000 where address="kolkata" ;
+Query OK, 2 rows affected (0.007 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+MariaDB [debjit]> select * from employees;
++----+--------+---------+---------+
+| id | name   | address | stipend |
++----+--------+---------+---------+
+|  1 | debjit | kolkata |   11000 |
+|  2 | debu   | Asansol |    NULL |
+|  3 | pratik | deshra  |   15000 |
+|  4 | subham | deshra  |   15000 |
+|  5 | akash  | kolkata |   11000 |
++----+--------+---------+---------+
+5 rows in set (0.000 sec)
+
+MariaDB [debjit]> update employees set address="deshra" where name ="debu" ;
+Query OK, 1 row affected (0.007 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [debjit]> select * from employees;
++----+--------+---------+---------+
+| id | name   | address | stipend |
++----+--------+---------+---------+
+|  1 | debjit | kolkata |   11000 |
+|  2 | debu   | deshra  |    NULL |
+|  3 | pratik | deshra  |   15000 |
+|  4 | subham | deshra  |   15000 |
+|  5 | akash  | kolkata |   11000 |
++----+--------+---------+---------+
+5 rows in set (0.000 sec)
+
+MariaDB [debjit]> update employees set stipend= 15000 where address="deshra" ;
+Query OK, 1 row affected (0.007 sec)
+Rows matched: 3  Changed: 1  Warnings: 0
+
+MariaDB [debjit]> select * from employees;
++----+--------+---------+---------+
+| id | name   | address | stipend |
++----+--------+---------+---------+
+|  1 | debjit | kolkata |   11000 |
+|  2 | debu   | deshra  |   15000 |
+|  3 | pratik | deshra  |   15000 |
+|  4 | subham | deshra  |   15000 |
+|  5 | akash  | kolkata |   11000 |
++----+--------+---------+---------+
+5 rows in set (0.000 sec)
+
+MariaDB [debjit]> select id , stipent from employees;
+ERROR 1054 (42S22): Unknown column 'stipent' in 'field list'
+MariaDB [debjit]> select id , stipend from employees;
++----+---------+
+| id | stipend |
++----+---------+
+|  1 |   11000 |
+|  2 |   15000 |
+|  3 |   15000 |
+|  4 |   15000 |
+|  5 |   11000 |
++----+---------+
+5 rows in set (0.000 sec)
+
+MariaDB [debjit]> update employees set stipend = stipent +10000 where address="deshra";
+ERROR 1054 (42S22): Unknown column 'stipent' in 'field list'
+MariaDB [debjit]> update employees set stipend = stipend +10000 where address="deshra";
+Query OK, 3 rows affected (0.001 sec)
+Rows matched: 3  Changed: 3  Warnings: 0
+
+MariaDB [debjit]> select * from employees;
++----+--------+---------+---------+
+| id | name   | address | stipend |
++----+--------+---------+---------+
+|  1 | debjit | kolkata |   11000 |
+|  2 | debu   | deshra  |   25000 |
+|  3 | pratik | deshra  |   25000 |
+|  4 | subham | deshra  |   25000 |
+|  5 | akash  | kolkata |   11000 |
++----+--------+---------+---------+
+5 rows in set (0.000 sec)
+
+MariaDB [debjit]> delete from employees where name = "debjit";
+Query OK, 1 row affected (0.007 sec)
+
+MariaDB [debjit]> select * from employees;
++----+--------+---------+---------+
+| id | name   | address | stipend |
++----+--------+---------+---------+
+|  2 | debu   | deshra  |   25000 |
+|  3 | pratik | deshra  |   25000 |
+|  4 | subham | deshra  |   25000 |
+|  5 | akash  | kolkata |   11000 |
++----+--------+---------+---------+
+4 rows in set (0.000 sec)
+
+MariaDB [debjit]> delete from employees where address="deshra";
+Query OK, 3 rows affected (0.001 sec)
+
+MariaDB [debjit]> select * from employees;
++----+-------+---------+---------+
+| id | name  | address | stipend |
++----+-------+---------+---------+
+|  5 | akash | kolkata |   11000 |
++----+-------+---------+---------+
+1 row in set (0.000 sec)
+
+MariaDB [debjit]> drop table employees;
+Query OK, 0 rows affected (0.009 sec)
+
+MariaDB [debjit]> show tables;
+Empty set (0.001 sec)
+
+MariaDB [debjit]> select * from employees;
+ERROR 1146 (42S02): Table 'debjit.employees' doesn't exist
+MariaDB [debjit]> drop debjit;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'debjit' at line 1
+MariaDB [debjit]> drop database debjit;
+Query OK, 0 rows affected (0.002 sec)
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------+
+5 rows in set (0.001 sec)
+
+MariaDB [(none)]>

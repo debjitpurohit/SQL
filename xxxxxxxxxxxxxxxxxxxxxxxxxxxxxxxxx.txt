@@ -1,0 +1,32 @@
+------------->    to add multile datA in a tables ------------------------>
+
+INSERT INTO tables_name(id , name , address) VALUES (4 , "subham" , "jyrambati"),(5 , "akash" , "kotulpur"), (6 , "sus" , "peerless");
+
+----------> updating data(where is a clasuse )
+
+update tables_name set address="deshra" where id=4 ; 
+
+
+---------->> adding a new column in a table
+
+alter table tables_name add column stipend bigint;
+
+
+------------>> multiple updatation
+
+ update employees set stipend= 15000 where address="deshra" ;
+
+------>displaying a all column
+select * from tables_name;
+
+----------------displaying a praticular column
+select id , stipend from tables_name;
+
+---------------------> operator in mysql
+update employees set stipend = stipent +10000 where address="deshra";
+
+--------> delete a data from table
+delete from tables_name where name = "debjit";
+
+---------->> delete table from database 
+drop table employees;
